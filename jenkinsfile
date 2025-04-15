@@ -22,9 +22,9 @@ pipeline {
                 withCredentials([azureServicePrincipal(credentialsId: AZURE_CREDENTIALS_ID)]) {
                     bat 'az login --service-principal -u %AZURE_CLIENT_ID% -p %AZURE_CLIENT_SECRET% --tenant %AZURE_TENANT_ID%'
                     bat 'terraform -version'
-                    bat 'cd terraform44 && terraform init'
-                    bat 'cd terraform44 && terraform plan'
-                    bat 'cd terraform44 && terraform apply -auto-approve'
+                    bat 'cd terraform_1.11.3_windows_386 && terraform init'
+                    bat 'cd terraform_1.11.3_windows_386 && terraform plan'
+                    bat 'cd terraform_1.11.3_windows_386 && terraform apply -auto-approve'
                 }
             }
         }
