@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Shijo\\Desktop\\Capgemini Training\\Azure\\Assignment_15_04_25\\CreatingApplications\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2346BB22-8CA5-4AB7-BBAD-0C024388C10B}|CreatingApplications\\CreatingApplications.csproj|c:\\users\\shijo\\desktop\\capgemini training\\azure\\assignment_15_04_25\\creatingapplications\\creatingapplications\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2346BB22-8CA5-4AB7-BBAD-0C024388C10B}|CreatingApplications\\CreatingApplications.csproj|solutionrelative:creatingapplications\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2346BB22-8CA5-4AB7-BBAD-0C024388C10B}|CreatingApplications\\CreatingApplications.csproj|c:\\users\\shijo\\desktop\\capgemini training\\azure\\assignment_15_04_25\\creatingapplications\\creatingapplications\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{2346BB22-8CA5-4AB7-BBAD-0C024388C10B}|CreatingApplications\\CreatingApplications.csproj|solutionrelative:creatingapplications\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Shijo\\Desktop\\Capgemini Training\\Azure\\Assignment_15_04_25\\CreatingApplications\\CreatingApplications\\Program.cs",
+              "RelativeDocumentMoniker": "CreatingApplications\\Program.cs",
+              "ToolTip": "C:\\Users\\Shijo\\Desktop\\Capgemini Training\\Azure\\Assignment_15_04_25\\CreatingApplications\\CreatingApplications\\Program.cs",
+              "RelativeToolTip": "CreatingApplications\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T06:35:20.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\Shijo\\Desktop\\Capgemini Training\\Azure\\Assignment_15_04_25\\CreatingApplications\\CreatingApplications\\Dockerfile",
+              "RelativeDocumentMoniker": "CreatingApplications\\Dockerfile",
+              "ToolTip": "C:\\Users\\Shijo\\Desktop\\Capgemini Training\\Azure\\Assignment_15_04_25\\CreatingApplications\\CreatingApplications\\Dockerfile",
+              "RelativeToolTip": "CreatingApplications\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-15T06:24:56.365Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

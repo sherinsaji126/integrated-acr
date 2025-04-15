@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapi-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapi
+  template:
+    metadata:
+      labels:
+        app: myapi
+    spec:
+      containers:
+        - name: myapi
+          image: myacrregistry123.azurecr.io/myapi:latest
+          ports:
+            - containerPort: 8080 # containerport , target port and expose in dockerfile should match
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapi-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: myapi
+  ports:
+    - protocol: TCP
+      port: 80 
+      targetPort: 8080
