@@ -9,7 +9,7 @@ pipeline {
         IMAGE_TAG = 'latest'
         RESOURCE_GROUP = 'mysherin-newrg'
         AKS_CLUSTER = 'myakscluster'
-        TF_WORKING_DIR = '.'
+        TF_WORKING_DIR = 'terraform'
     }
 
     stages {
