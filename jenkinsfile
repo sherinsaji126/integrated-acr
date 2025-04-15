@@ -21,13 +21,13 @@ pipeline {
 
         stage('Build .NET App') {
             steps {
-                bat 'dotnet publish WebApiJenkins/WebApiJenkins.csproj -c Release -o out'
+                bat 'dotnet publish CreatingApplications/CreatingApplications.csproj -c Release -o out'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                bat "docker build -t %ACR_LOGIN_SERVER%/%IMAGE_NAME%:%IMAGE_TAG% -f WebApiJenkins/Dockerfile WebApiJenkins"
+                bat "docker build -t %ACR_LOGIN_SERVER%/%IMAGE_NAME%:%IMAGE_TAG% -f CreatingApplications/CreatingApplications/Dockerfile CreatingApplications/CreatingApplications"
             }
         }
 
@@ -89,7 +89,7 @@ pipeline {
 
         stage('Deploy to AKS') {
             steps {
-                bat "kubectl apply -f WebApiJenkins/test.yaml"
+                bat "kubectl apply -f CreatingApplications/deployment.yaml"
             }
         }
     }
