@@ -3,17 +3,17 @@ pipeline {
 
     environment {
         AZURE_CREDENTIALS_ID = 'azure-aks-service-principal' // Jenkins credentials ID (Service Principal)
-        RESOURCE_GROUP = 'rg-integrated-aks' 
-        ACR_NAME = 'khushacr989397'
+        RESOURCE_GROUP = 'mysherin-newrg' 
+        ACR_NAME = 'myacrregistry123'
         ACR_LOGIN_SERVER = "${ACR_NAME}.azurecr.io"
-        IMAGE_NAME = 'dotnet-webapi'
-        AKS_CLUSTER = 'aksweb1221'
+        IMAGE_NAME = 'myapi'
+        AKS_CLUSTER = 'myakscluster'
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/khushboo-289/Aks-Integrated-Application.git'
+                git branch: 'main', url: 'https://github.com/sherinsaji126/integrated-acr.git'
             }
         }
 
@@ -58,10 +58,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ Deployment to AKS Successful!'
+            echo 'Deployment to AKS Successful!'
         }
         failure {
-            echo '❌ Deployment Failed!'
+            echo 'Deployment Failed!'
         }
     }
 }
