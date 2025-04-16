@@ -2,20 +2,20 @@ pipeline {
     agent any
 
     environment {
-        ACR_NAME = 'myacrregistry123'
+        ACR_NAME = 'mysherinacrregistry123'
         AZURE_CREDENTIALS_ID = 'azure-aks-service-principal'
         ACR_LOGIN_SERVER = "${ACR_NAME}.azurecr.io"
         IMAGE_NAME = 'myapi'
         IMAGE_TAG = 'latest'
         RESOURCE_GROUP = 'mysherin-newrg'
-        AKS_CLUSTER = 'myakscluster'
+        AKS_CLUSTER = 'mysherinakscluster'
         TF_WORKING_DIR = 'terraform'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/sherinsaji126/integrated-acr.git'
+               git branch: 'main', url: 'https://github.com/sherinsaji126/integrated-acr.git'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat "docker build -t %ACR_LOGIN_SERVER%/%IMAGE_NAME%:%IMAGE_TAG% -f CreatingApplications/Dockerfile ."
+                bat "docker build -t %ACR_LOGIN_SERVER%/%IMAGE_NAME%:%IMAGE_TAG% -f AksProject/Dockerfile ."
             }
         }
 
@@ -40,6 +40,7 @@ pipeline {
                     echo "Initializing Terraform..."
                     terraform init
                     """
+
                 }
             }
         }
@@ -52,6 +53,7 @@ pipeline {
             cd %TF_WORKING_DIR%
             terraform plan -out=tfplan
             """
+
         }
     }
 }
@@ -66,6 +68,7 @@ pipeline {
             echo "Applying Terraform Plan..."
             terraform apply -auto-approve tfplan
             """
+
         }
     }
 }
@@ -89,7 +92,7 @@ pipeline {
 
         stage('Deploy to AKS') {
             steps {
-                bat "kubectl apply -f CreatingApplications/deployment.yaml"
+                bat "kubectl apply -f deployment.yaml"
             }
         }
     }
