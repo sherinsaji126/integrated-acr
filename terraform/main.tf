@@ -5,7 +5,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "mysherin-newrg"
-  location = "East US"
+  location = "East US2"
 }
 
 resource "azurerm_container_registry" "acr" {
