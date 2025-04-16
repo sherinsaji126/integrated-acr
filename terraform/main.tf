@@ -36,7 +36,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   name                ="mysherinakscluster"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
-  dns_prefix          = "${var.aks_name}-dns"
+  dns_prefix          = "myaks"
 
   default_node_pool {
     name       = "default"
