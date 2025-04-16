@@ -12,7 +12,7 @@ provider "azurerm" {
   features {}
   resource_provider_registrations = "none"
   subscription_id                 = "85b87ac7-2879-4c21-a8ad-a45ac94c5fff"
-  tenant_id                       = "4dd7a366-bffd-434d-ad00-bbbee4d2001f"
+  tenant_id                       = "4dd7a366-bffd-434d-ad00-bbbee4d2001f" 
 }
 
 resource "azurerm_resource_group" "main" {
@@ -33,7 +33,7 @@ resource "azurerm_container_registry" "acr" {
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {
-  name                = "mysherinsajiakscluster"
+  name                ="mysherinsajiakscluster"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
   dns_prefix          = "myaks"
@@ -56,12 +56,15 @@ resource "azurerm_kubernetes_cluster" "aks" {
   tags = {
     environment = "dev"
   }
+
+  depends_on = [azurerm_container_registry.acr]
 }
 
-# Import existing AKS cluster if not already tracked in state
+# Wait until AKS identity is fully available using a data source
 data "azurerm_kubernetes_cluster" "aks" {
-  name                = "mysherinsajiakscluster"
+  name                = azurerm_kubernetes_cluster.aks.name
   resource_group_name = azurerm_resource_group.main.name
+  depends_on          = [azurerm_kubernetes_cluster.aks]
 }
 
 resource "azurerm_role_assignment" "acr_pull" {
