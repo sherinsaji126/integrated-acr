@@ -12,7 +12,7 @@ provider "azurerm" {
   features {}
   resource_provider_registrations = "none"
   subscription_id                 = "85b87ac7-2879-4c21-a8ad-a45ac94c5fff"
-  tenant_id                       = "4dd7a366-bffd-434d-ad00-bbbee4d2001f" 
+  tenant_id                       = "4dd7a366-bffd-434d-ad00-bbbee4d2001f"
 }
 
 resource "azurerm_resource_group" "main" {
@@ -33,7 +33,7 @@ resource "azurerm_container_registry" "acr" {
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {
-  name                ="mysherinsajiakscluster"
+  name                = "mysherinsajiakscluster"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
   dns_prefix          = "myaks"
@@ -60,11 +60,12 @@ resource "azurerm_kubernetes_cluster" "aks" {
   depends_on = [azurerm_container_registry.acr]
 }
 
-# Wait until AKS identity is fully available using a data source
+# This ensures AKS identity is available after creation
 data "azurerm_kubernetes_cluster" "aks" {
   name                = azurerm_kubernetes_cluster.aks.name
   resource_group_name = azurerm_resource_group.main.name
-  depends_on          = [azurerm_kubernetes_cluster.aks]
+
+  depends_on = [azurerm_kubernetes_cluster.aks]
 }
 
 resource "azurerm_role_assignment" "acr_pull" {
@@ -72,7 +73,11 @@ resource "azurerm_role_assignment" "acr_pull" {
   role_definition_name = "AcrPull"
   principal_id         = data.azurerm_kubernetes_cluster.aks.kubelet_identity[0].object_id
 
-  # Avoids recreation if principal_id already has role
+  depends_on = [
+    azurerm_kubernetes_cluster.aks,
+    azurerm_container_registry.acr
+  ]
+
   lifecycle {
     ignore_changes = [principal_id]
   }
